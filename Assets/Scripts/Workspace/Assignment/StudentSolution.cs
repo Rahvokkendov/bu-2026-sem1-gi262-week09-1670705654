@@ -90,12 +90,54 @@ namespace Assignment
 
         public string ASN01_ReverseString(string str)
         {
-            throw new NotImplementedException();
+            Stack<char> chars = new Stack<char>();
+            string reStr = "";
+            foreach(char target in str)
+            {
+                chars.Push(target);
+            }
+            int sc = chars.Count;
+            for(int i = 0; i < sc; i++)
+            {
+                var rearange = chars.Pop();
+                reStr += rearange;
+            }
+            return reStr;
         }
 
         public bool ASN02_StackPalindrome(string str)
         {
-            throw new NotImplementedException();
+            string normalStr = "";
+            string reverseStr = "";
+
+            if(!string.IsNullOrEmpty(str))
+            {
+
+                Stack<char> chars = new Stack<char>();
+                foreach(char target in str)
+                {
+                    chars.Push(target);
+                }
+                int sc = chars.Count;
+                for(int i = 0; i < sc; i++)
+                {
+                    var rearange = chars.Pop() ;
+                    if(string.IsNullOrEmpty(normalStr))
+                    {
+                        normalStr += rearange;
+                        if(sc == 1)
+                        {
+                            reverseStr += rearange;
+                        }
+                    }
+                    else if(i == sc - 1)
+                    {
+                        reverseStr += rearange;
+                    }
+                }
+            }
+            if(normalStr.ToLower() == reverseStr.ToLower()) return true;
+            return false;
         }
 
         #endregion
